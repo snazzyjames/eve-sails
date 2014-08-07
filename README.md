@@ -1,3 +1,4 @@
-# eve-sails
+eve-sails
+=========
 
-a [Sails](http://sailsjs.org) application
+An EVE Online Utility App built using Sails.js
