@@ -8,12 +8,11 @@
 module.exports = {
 
     'new':function(req,res) {
-        res.locals.flash = _.clone(req.session.flash);
         res.view();
-        req.session.flash = {};
     },
 
     create: function(req, res, next) {
+
         User.create( req.params.all(), function userCreated(err, user) {
 
             //If there's an error
@@ -28,9 +27,20 @@ module.exports = {
             }
 
             //After successfully creating the user, redirect to the show action
+            //res.redirect('/user/show/'+user.id);
             res.json(user);
-            req.session.flash = {};
         })
+    },
+
+    //render the profile view(e.g. /views/show.ejs
+    show: function(req, res, next) {
+        User.findOne(req.param('id'), function foundUser(err, user) {
+            if(err) return next(err);
+            if(!user) return next();
+            res.view({
+                user: user
+            })
+        });
     }
 };
 
