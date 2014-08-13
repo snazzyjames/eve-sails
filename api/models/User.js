@@ -15,11 +15,11 @@ module.exports = {
             unique: true
         },
         password: { type: 'string' },
-        keyId: {
+        keyid: {
             type: 'string',
             unique: true
         },
-        vCode: {
+        vcode: {
             type: 'string',
             unique: true
         }
